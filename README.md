@@ -1,6 +1,6 @@
 # RewardBot
 
 # Team members & github IDs 
-# Miriam Pokdolzin // podkolzinmir
-# Eric Fernandes //
-# Sarah Wiessler //
+ Miriam Pokdolzin // podkolzinmir
+ Eric Fernandes // 
+ Sarah Wiessler // SWiessler
