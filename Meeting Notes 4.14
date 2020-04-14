@@ -1,0 +1,9 @@
+Decided to pivot from separately hosted bot to slack bot
+  Possibly still connection firebase to save user scores if possible. If not, leaderboard will hopefully come from topcoder api
+
+Decided to continue to try using topcoder api to access requests from slackbot
+
+Shifted priorities with use cases, will no longer monitor the quality of the submissions 
+  However, can get descriptions of the achievements. will if get time assign points to achievements 
+  
+Will attempt to still monitor user submissions and leaderboard.
