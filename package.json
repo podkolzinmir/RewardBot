@@ -1,0 +1,24 @@
+{
+  "name": "rewardbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "slackbots": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/podkolzinmir/RewardBot.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/podkolzinmir/RewardBot/issues"
+  },
+  "homepage": "https://github.com/podkolzinmir/RewardBot#readme"
+}
