@@ -4,7 +4,7 @@ var mysql = require('mysql');
 
 // Initialize slackbot
 const bot = new SlackBot({
-token: 'xoxb-1055511604102-1064351790406-ge5ku3crxpwcACmioyDFEF3f',
+token: 'xoxb-1055511604102-1064351790406-bvZBow5OaznH98HFM0VsBvXn',
 name: 'RewardBot'
 });
 
@@ -17,6 +17,8 @@ var con = mysql.createConnection({
 // Create start handler
 bot.on('start',() =>{
     addUser("TestUser",42);
+  
+    bot.postMessageToChannel('general', 'Hello!');
 });
 
 
