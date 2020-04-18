@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "axios": "^0.19.2",
+    "mysql": "^2.18.1",
     "slackbots": "^1.2.0"
   },
   "devDependencies": {},
