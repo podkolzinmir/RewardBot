@@ -45,7 +45,7 @@ At the end of iteration 1 the team had its first meeting. The team divided its u
 
 **Iteration 2** 
 
-The team thought the frquent scum meetings were useful. It helped refocus the group on upcoming tasks and in progress tasks. It also gave an opportunity to bounce ideas off one another for tasks. During iteration 2 there were some hiccups the team faced. The bot token was consistently giving a "not_allowed_token_type" error. Additionally the team couldn't clearly understand how to use Firebase. Both obstacles were overcome. A new app was created within Slack API using the older version of slack api since it was uncovered that the new version of the apps are not compatible with RTM API, which the team needed. As for the Firebase problem, the team turned to MySQL and set up a MySQL database. 
+The team thought the frequent scum meetings were useful. It helped refocus the group on upcoming tasks and in progress tasks. It also gave an opportunity to bounce ideas off one another for tasks. During iteration 2 there were some hiccups the team faced. The bot token was consistently giving a "not_allowed_token_type" error. Additionally the team couldn't clearly understand how to use Firebase. Both obstacles were overcome. A new app was created within Slack API using the older version of slack api since it was uncovered that the new version of the apps are not compatible with RTM API, which the team needed. As for the Firebase problem, the team turned to MySQL and set up a MySQL database. 
 
 ## Status of Tasks
 
