@@ -4,7 +4,7 @@ var mysql = require('mysql');
 
 // Initialize slackbot
 const bot = new SlackBot({
-token: 'xoxb-1055511604102-1064351790406-bvZBow5OaznH98HFM0VsBvXn',
+token: 'xoxb-1055511604102-1064351790406-2Hs8LyvfWo164M6IseH69Wuz',
 name: 'RewardBot'
 });
 
@@ -30,7 +30,15 @@ function addUser(User, Score){
         if (err) throw err;
         con.query("INSERT INTO scores (user_id,score) values ('"+User+"','"+Score+"')", function (err, result,) {
           if (err) throw err;
-          console.log(result);
+          bot.postMessageToChannel('general', 'User "'+User+'" has been added with a score of '+Score+'.');
         });
       });
+}
+
+function getTopCoder(handle){
+  var request = require('request');
+  request('http://api.topcoder.com/v2/users/'+handle, function (err, response, body) {
+    if(err) throw err;
+    return JSON.parse(body).Achievements.length;
+  });
 }
