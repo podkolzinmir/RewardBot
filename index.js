@@ -14,6 +14,7 @@ var con = mysql.createConnection({
     password: "password", 
     database: "userscores"
   });
+  
 // Create start handler
 bot.on('start',() =>{
     getTopCoder("hohosky",addUser);
@@ -33,7 +34,23 @@ function addUser(User,Score){
     });
   });
 }
-function getTopCoder(handle,callback){
+
+// Message Handler
+bot.on('message', data =>{
+  if(data.type !== 'message'){
+    return;
+  }
+  handleMessage(data.text)
+})
+
+// Response to data
+function handleMessage(message){
+  if(message.includes(' hey bot')){
+    bot.postMessageToChannel('general', 'Omg hey');
+  }
+}
+  // TopCoder stuff
+function getTopCoder(handle){
   var request = require('request');
   request('http://api.topcoder.com/v2/users/'+handle, function (err, response, body) {
     len=JSON.parse(body).Achievements.length;
