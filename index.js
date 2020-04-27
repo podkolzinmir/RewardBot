@@ -4,7 +4,7 @@ var mysql = require('mysql');
 
 // Initialize slackbot
 const bot = new SlackBot({
-token: 'xoxb-1055511604102-1064351790406-bvZBow5OaznH98HFM0VsBvXn',
+token: 'xoxb-1055511604102-1072423454231-v6agLEf4y1QAEDQbXdPohfzp',
 name: 'RewardBot'
 });
 
@@ -14,11 +14,12 @@ var con = mysql.createConnection({
     password: "password", 
     database: "userscores"
   });
+  
 // Create start handler
 bot.on('start',() =>{
-    addUser("TestUser",42);
+   // addUser("TestUser",42);
   
-    bot.postMessageToChannel('general', 'Hello!');
+  //  bot.postMessageToChannel('general', 'Test');
 });
 
 
@@ -33,4 +34,19 @@ function addUser(User, Score){
           console.log(result);
         });
       });
+}
+
+// Message Handler
+bot.on('message', data =>{
+  if(data.type !== 'message'){
+    return;
+  }
+  handleMessage(data.text)
+})
+
+// Response to data
+function handleMessage(message){
+  if(message.includes(' hey bot')){
+    bot.postMessageToChannel('general', 'Omg hey');
+  }
 }
