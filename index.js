@@ -4,7 +4,7 @@ var mysql = require('mysql');
 
 // Initialize slackbot
 const bot = new SlackBot({
-token: 'xoxb-1055511604102-1072423454231-6pgzTm1VzeOBBlbNAiP9zNpU',
+token: 'xoxb-1055511604102-1072423454231-W37mANVpfbUrMiEACvsy4Noj',
 name: 'RewardBot'
 });
 
@@ -17,8 +17,6 @@ var con = mysql.createConnection({
   
 // Create start handler
 bot.on('start',() =>{
-    getTopCoder("hohosky",addUser);
-    postLeaderboard();
     bot.postMessageToChannel('general', 'Hello!');
 });
 
@@ -45,8 +43,8 @@ bot.on('message', data =>{
 
 // Response to data
 function handleMessage(message){
-  if(message.includes(' hey bot')){
-    bot.postMessageToChannel('general', 'Omg hey');
+  if(message.includes('Handle: ')){
+    bot.postMessageToChannel('general', 'Your handle is '+message.substring(message.indexOf('Handle: ')+8));
   }
 }
   // TopCoder stuff
@@ -54,7 +52,7 @@ function getTopCoder(handle){
   var request = require('request');
   request('http://api.topcoder.com/v2/users/'+handle, function (err, response, body) {
     len=JSON.parse(body).Achievements.length;
-    return callback(handle,len);
+    return addUser(handle,len);
     if(err) throw err;
   });
 }
