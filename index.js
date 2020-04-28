@@ -17,24 +17,26 @@ var con = mysql.createConnection({
 
 // Create start handler
 bot.on('start',() =>{
-   // addUser("TestUser",42);
+// addUser("TestUser",42);
 
   bot.postMessageToChannel('general', 'Hello! I\'m here to help you record your accomplishments and see where you stack up!');
   bot.postMessageToChannel('general', 'Say: \"Show me the leaderboard\" to see the leaderboard for the day. \nSay: \"I finished a problem\" to let me add to your point value. \nSay: \"I started a problem\" to let me add to your point value. \nMake sure to @ me!');
+  //getTopCoder("hohosky",addUser);
+  //postLeaderboard();
+  //bot.postMessageToChannel('general', 'Hello!');
 });
-
 
 // Error handler
 bot.on('error', (err) => console.log(err));
 
-function addUser(User, Score){
-    con.connect(function(err) {
-        if (err) throw err;
-        con.query("INSERT INTO scores (user_id,score) values ('"+User+"','"+Score+"')", function (err, result,) {
-          if (err) throw err;
-          bot.postMessageToChannel('general', 'User "'+User+'" has been added with a score of '+Score+'.');
-        });
-      });
+function addUser(User,Score){
+  con.connect(function(err) {
+    if (err) throw err;
+    con.query("INSERT INTO scores (user_id,score) values ('"+User+"','"+Score+"')", function (err, result,) {
+      if (err) throw err;
+      bot.postMessageToChannel('general', 'User "'+User+'" has been added with a score of '+Score+'.');
+    });
+  });
 }
 
 // Message Handler
@@ -79,6 +81,23 @@ con.connect(function(err) {
   con.query("SELECT * FROM scores ORDER BY score DESC", function (err, result,) {
     if (err) throw err;
     bot.postMessageToChannel('general', 'Leaderboard:\n'+result);
+}
+  // TopCoder stuff
+function getTopCoder(handle){
+  var request = require('request');
+  request('http://api.topcoder.com/v2/users/'+handle, function (err, response, body) {
+    len=JSON.parse(body).Achievements.length;
+    return callback(handle,len);
+    if(err) throw err;
+  });
+}
+function postLeaderboard(){
+  con.connect(function(err) {
+    if (err) throw err;
+    con.query("SELECT * FROM scores ORDER BY score DESC", function (err, result,) {
+      if (err) throw err;
+      bot.postMessageToChannel('general', 'Leaderboard:\n'+result);
+    });
   });
 });
 }

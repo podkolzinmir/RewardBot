@@ -1,0 +1,26 @@
+Eric Fernandes
+Design:
+    I cannot confidently say that I personally followed any particular design methodology, instead I focused on commiting working code to 
+    progress the project. I did this because the project utilized a number of new tools and languages that I was unfamiliar with, and so
+    it was difficult to properly plan out and develop the project. The original design for the project was made with a surface level 
+    understanding of many of the tools and available functions of the TopCoder API, so much of it had to be redesigned or dropped as the project
+    developed. One such design concept was the different classifications of actions (minor, normal, and major) because it was believed we would
+    be able to get updates from the website when users performed different actions, but this was later seen to not be possible within our 
+    constraints or abilities. In future projects, and if this project were to be done again, more time would need to be committed to understanding
+    the tools being used and what they are capable of before begining initial designs.
+Implementation:
+    Implementation of the bot had many difficulties, especially with the Slackbot API which seemed to be going through a series of updates which
+    repeatedly required the Slackbot to be deleted and remade. Due to the unfamiliarity with the tools and languages being used, much time was
+    taken finding tutorials and looking over documentation. As a result adding new functions became a long and confusing process as resources
+    would be based on out of date functions or not provide the information needed. In future projects it would be better to have greater 
+    familiarity with the tools being used so that implementation goes smoother and more time can be put towards considering methodology and
+    comprehensive testing.
+Process:
+    The project board was useful for assigning work to each member of the team and viewing how much progress was being made on the project. 
+    It did become difficult to remember to keep the board updated and find time to review other members' code. My schedule did not line up well
+    with the rest of the group, and issues increased as the semester progressed along with the move online. I've used project boards before with 
+    Trello and do plan on using them in future, issues with processes primarily stemmed from limited time.
+Overall:
+    As mentioned above, much proper methodology and practice was delayed or ignored due to a variety of issues. As such it is hard to say that
+    any were particularly useful throughout the redesigns and implementations of the project. In future what methods and practicies to implement
+    should be discussed as part of the initial designs once a sufficient understanding of the tools available is reached.
