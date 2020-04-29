@@ -4,7 +4,7 @@ var mysql = require('mysql');
 
 // Initialize slackbot
 const bot = new SlackBot({
-token: 'xoxb-1055511604102-1072423454231-wJ1uPQx7Rb5h9DFQfq2m5RbI',
+token: 'xoxb-1055511604102-1072423454231-SVFD0tuFOVfOfc63jznCsrag',
 name: 'RewardBot'
 });
 
@@ -71,9 +71,13 @@ function postLeaderboard(){
   });
   con.connect(function(err) {
     if (err) throw err;
-    con.query("SELECT * FROM scores ORDER BY score DESC", function (err, result,) {
+    con.query("SELECT * FROM scores ORDER BY score DESC LIMIT 5", function (err, result,) {
       if (err) throw err;
-      bot.postMessageToChannel('general', 'Leaderboard:\n'+result);
+      message="Leaderboard:\n"
+      for(i=0;i<result.length;i++){
+        message+=result[i].user_id+" : "+result[i].score+(i+1==result.length? "":"\n");
+      }
+      bot.postMessageToChannel('general',message);
       con.end();
     });
   });
