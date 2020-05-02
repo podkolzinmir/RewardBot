@@ -4,17 +4,31 @@ var mysql = require('mysql');
 
 // Initialize slackbot
 const bot = new SlackBot({
-token: 'xoxb-1055511604102-1072423454231-zyPLNHE0c2nazAoMCcQGku6Y',
+
+token: 'Insert token here',
+
 name: 'RewardBot'
 });
 
 // Create start handler
 bot.on('start',() =>{
+
+  //Timer to show leaderboard at the end of the workday
+  // var d = new Date();
+  // var millisTill5 = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 17, 0, 0, 0 ) - d;
+  // if (millisTill5 < 0) {
+  //   millisTill5 += 86400000
+  // }
+  // setTimeout(bot.postMessageToChannel('general','It\'s 5:00 PM, end of the workday! Time to post the leaderboard.'), millisTill5);
+
+
+  //Introduction
   bot.postMessageToChannel('general', 'Hello! I\'m here to help you record your accomplishments and see where you stack up!');
-  bot.postMessageToChannel('general', 'Say: \"Show me the leaderboard\" to see the leaderboard for the day.\n'+
-  'Say: \"Add me to the leaderboard Handle:(TopCoder Username)\" to let me add you to the database.\n'+
-  'Say: \"I finished a problem Handle:(TopCoder Username)\" to let me add to your point value. \n'+
-  'Say: \"I started a problem Handle:(TopCoder Username)\" to let me add to your point value. \nMake sure to @ me!');
+  bot.postMessageToChannel('general', "Say: \"Leaderboard\" to see the leaderboard for the day."
+  + "\nSay: \"Fin\" to let me add to your finished problem point value."
+  + "\nSay: \"Started\" to let me add a started problem to your point value. \nMake sure to @ me!");
+
+
 });
 
 // Error handler
@@ -39,18 +53,19 @@ function handleMessage(message){
   if(message.includes('Add me to the leaderboard ')){
     getTopCoder(user);
   }
-  if(message.includes('Show me the leaderboard')){
+  if(message.includes('Leaderboard')){
     postLeaderboard();
   }
-  if(message.includes('I finished a problem')){
+  if(message.includes('Fin')){
     bot.postMessageToChannel('general', 'Great Job! +3 Points');
     addPoints(user,3);
   }
-  if(message.includes('I started a problem')){
+  if(message.includes('Started')){
     bot.postMessageToChannel('general', 'Great Job! +1 Point');
     addPoints(user,1);
   }
 }
+
 
 // TopCoder stuff
 function getTopCoder(handle){
