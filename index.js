@@ -24,9 +24,12 @@ bot.on('start',() =>{
 
   //Introduction
   bot.postMessageToChannel('general', 'Hello! I\'m here to help you record your accomplishments and see where you stack up!');
-  bot.postMessageToChannel('general', "Say: \"Leaderboard\" to see the leaderboard for the day."
-  + "\nSay: \"Fin\" to let me add to your finished problem point value."
-  + "\nSay: \"Started\" to let me add a started problem to your point value. \nMake sure to @ me!");
+  bot.postMessageToChannel('general', "Say: \"!Leaderboard\" to see the leaderboard for the day."
+  + "\nSay: \"!Add\" to let me add you to the leaderboard."
+  + "\nSay: \"!Private\" to remove/add yourself from/to the public leaderboard."
+  + "\nSay: \"!Finish\" to let me add to your finished problem point value."
+  + "\nSay: \"!Start\" to let me add a started problem to your point value. "
+  + "\nMake sure to @ me and end all messages with Handle:(TopCoder Username) to let me know who you are!");
 
 
 });
@@ -50,17 +53,20 @@ function handleMessage(message){
   if(message.includes('Handle: ')){
     user=message.substring(message.indexOf('Handle: ')+8);
   }
-  if(message.includes('Add me to the leaderboard ')){
+  if(message.includes('!Add')){
     getTopCoder(user);
   }
-  if(message.includes('Leaderboard')){
+  if(message.includes('!Private')){
+    setPrivate(user);
+  }
+  if(message.includes('!Leaderboard')){
     postLeaderboard();
   }
-  if(message.includes('Fin')){
+  if(message.includes('!Finish')){
     bot.postMessageToChannel('general', 'Great Job! +3 Points');
     addPoints(user,3);
   }
-  if(message.includes('Started')){
+  if(message.includes('!Start')){
     bot.postMessageToChannel('general', 'Great Job! +1 Point');
     addPoints(user,1);
   }
@@ -86,7 +92,7 @@ function postLeaderboard(){
   });
   con.connect(function(err) {
     if (err) throw err;
-    con.query("SELECT * FROM scores ORDER BY score DESC LIMIT 5", function (err, result,) {
+    con.query("SELECT * FROM scores WHERE private = 0 ORDER BY score DESC LIMIT 10", function (err, result,) {
       if (err) throw err;
       message="Leaderboard:\n"
       for(i=0;i<result.length;i++){
@@ -109,6 +115,22 @@ function addPoints(User,Score){
     con.query("INSERT INTO scores(user_id,score) values('"+User+"',"+Score+") ON DUPLICATE KEY UPDATE score=score+"+Score+";", function (err, result,) {
       if (err) throw err;
       bot.postMessageToChannel('general', 'User "'+User+'" has been added with a score of '+Score+'.');
+      con.end();
+    });
+  });
+}
+function setPrivate(handle){
+  var con = mysql.createConnection({
+    host: "localhost",
+    user: "RewardBot",
+    password: "password",
+    database: "userscores"
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    con.query("UPDATE scores SET private=1-private WHERE user_id=\""+handle+"\""+";", function (err, result,) {
+      if (err) throw err;
+      bot.postMessageToChannel('general', 'Your privacy setting has changed.');
       con.end();
     });
   });
