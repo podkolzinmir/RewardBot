@@ -112,7 +112,7 @@ function addPoints(User,Score){
   });
   con.connect(function(err) {
     if (err) throw err;
-    con.query("INSERT INTO scores(user_id,score) values('"+User+"',"+Score+") ON DUPLICATE KEY UPDATE score=score+"+Score+";", function (err, result,) {
+    con.query("INSERT INTO scores(user_id,score,private) values('"+User+"',"+Score+",0) ON DUPLICATE KEY UPDATE score=score+"+Score+";", function (err, result,) {
       if (err) throw err;
       bot.postMessageToChannel('general', 'User "'+User+'" has been added with a score of '+Score+'.');
       con.end();
