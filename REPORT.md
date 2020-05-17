@@ -25,6 +25,8 @@ Note: Starting a problem is awarded less points as it is a minor action whereas 
 ![](https://github.com/podkolzinmir/RewardBot/blob/master/Primary%20Features/Privacy_setting.jpg)
 
 ## Our reflection on the development process and project
+While the overall development process was hindered due to the remote learning switch, we also were learning the valuable skills it takes to commmunicate and develop effectively online. Thankfully, most of our work was already online as we made use of shared document editing websites and github as an online storage vessel for the code we were writing. For our meetings, we used zoom to have a semblance of face to face contact. Due to modern technology, it is much easier to work remotely than ever before. We believe the pandemic is changing what people believe is necessary "in the office" work. Since many people are adjusting to working remotely, this may be a future we need to be equipped to handle. 
 
+During the planning stages, after significant brainstorming we felt as if we had a good grip on not only understanding the problem we are solving, but the technology needed to do it. It wasn't until the iteration that the project started becoming less realistic due to our technical knowledge and third party permission issues. However, we were able to pivot the project into something much more doable, and worked quickly to make up for the lost time spent on the other idea. Through collaboration with each other, the professor, and the teaching assistant, we were able to come up with a working product that contained most of our original ideas.
 
 ## Any limitations and future work
